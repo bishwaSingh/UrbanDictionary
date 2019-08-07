@@ -5,4 +5,7 @@
     <color name="colorAccent">#EFFF00</color>
     <color name="colorBackground">#EEEEEE</color>
     <color name="word">#134FE6</color>
+    <color name="iconTint">#000</color>
+    <color name="searchQueryTextColor">#FFF</color>
+    <color name="searchHintTextColor">#CCFFFFFF</color>
 </resources>

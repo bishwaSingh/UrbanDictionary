@@ -9,6 +9,7 @@
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:iconTint">@color/iconTint</item>
     </style>
 
 </resources>
