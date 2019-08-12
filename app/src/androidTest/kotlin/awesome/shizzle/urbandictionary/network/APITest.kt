@@ -1,4 +1,4 @@
-package awesome.shizzle.urbandictionary
+package awesome.shizzle.urbandictionary.network
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -7,7 +7,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import awesome.shizzle.urbandictionary.di.networkModule
 import awesome.shizzle.urbandictionary.model.Response
-import awesome.shizzle.urbandictionary.network.RapidAPIService
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.After

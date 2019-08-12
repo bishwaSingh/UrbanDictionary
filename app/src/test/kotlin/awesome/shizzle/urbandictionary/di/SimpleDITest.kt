@@ -1,4 +1,4 @@
-package awesome.shizzle.urbandictionary
+package awesome.shizzle.urbandictionary.di
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule

@@ -1,4 +1,4 @@
-package awesome.shizzle.urbandictionary
+package awesome.shizzle.urbandictionary.model
 
 import awesome.shizzle.urbandictionary.model.Response
 import com.google.common.truth.Truth
