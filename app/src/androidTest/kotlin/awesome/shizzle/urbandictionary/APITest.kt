@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.SmallTest
 import awesome.shizzle.urbandictionary.di.networkModule
 import awesome.shizzle.urbandictionary.model.Response
 import awesome.shizzle.urbandictionary.network.RapidAPIService
@@ -21,6 +22,7 @@ import org.koin.test.KoinTest
 import org.koin.test.inject
 
 @RunWith(AndroidJUnit4::class)
+@SmallTest
 class APITest : KoinTest {
 
     @get:Rule
