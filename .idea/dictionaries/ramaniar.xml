@@ -2,6 +2,7 @@
   <dictionary name="ramaniar">
     <words>
       <w>coroutines</w>
+      <w>koin</w>
     </words>
   </dictionary>
 </component>

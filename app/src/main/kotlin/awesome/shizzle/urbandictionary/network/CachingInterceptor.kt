@@ -15,7 +15,7 @@ import androidx.core.content.ContextCompat.getSystemService
 class CachingInterceptor(context: Context) : Interceptor {
     private val connectivityManager = context.getSystemService(
         Context.CONNECTIVITY_SERVICE
-    ) as ConnectivityManager
+    ) as? ConnectivityManager
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): okhttp3.Response {
@@ -38,7 +38,7 @@ class CachingInterceptor(context: Context) : Interceptor {
 
     private fun isConnected(): Boolean {
         try {
-            return connectivityManager.activeNetworkInfo.isConnected
+            return connectivityManager?.activeNetworkInfo?.isConnected == true
         } catch (e: Exception) {
             Log.w("CachingInterceptor", e.toString())
         }
