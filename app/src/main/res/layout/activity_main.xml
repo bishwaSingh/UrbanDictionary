@@ -15,8 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:leftButtonDrawable="@drawable/ic_search_black_24dp"
-            app:queryInputHint="Search in Urban Dictionary"
-            app:rightButtonDrawable="@drawable/ic_sort_black_24dp"
             app:isClearInputButtonEnabled="true"
             app:shouldDimBehind="false"
             app:areSuggestionsDisabled="true"
@@ -36,8 +34,7 @@
             android:clipToPadding="false"
             android:paddingTop="64dp"
             tools:listitem="@layout/list_item_definition"
-            tools:itemCount="3"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            tools:itemCount="3"/>
 
 
 </FrameLayout>

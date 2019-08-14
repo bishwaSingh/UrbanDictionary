@@ -51,4 +51,54 @@ class SerializationUnitTest {
         Truth.assertThat(serializedString)
             .isEqualTo("{\"list\":[{\"definition\":\"a smoking [substance] which is made from a mix of [PCP] and [embalming fluid].\",\"permalink\":\"http://water.urbanup.com/3407230\",\"thumbs_up\":274,\"sound_urls\":[\"https://api.twilio.com/2008-08-01/Accounts/ACd09691b82112e4b26fce156d7c01d0ed/Recordings/RE4515e7c7a293e6eea847315e0ef22b3e\"],\"author\":\"VolcomStoneLC\",\"word\":\"water\",\"defid\":3407230,\"current_vote\":\"\",\"written_on\":\"2008-10-14T00:00:00.000Z\",\"example\":\"\\\"[Yo nigga] you [got dat] water?\\\"\\r\\n\\r\\n\\\"[fo sho nigga]..\\\"\",\"thumbs_down\":80}]}")
     }
+
+    @Test
+    fun movieSearchDeserialization() {
+        val jsonString = """{
+                              "page": 1,
+                              "total_results": 2,
+                              "total_pages": 1,
+                              "results": [
+                                {
+                                  "vote_count": 12803,
+                                  "id": 106646,
+                                  "video": false,
+                                  "vote_average": 7.9,
+                                  "title": "The Wolf of Wall Street",
+                                  "popularity": 18.443,
+                                  "poster_path": "\/vK1o5rZGqxyovfIhZyMELhk03wO.jpg",
+                                  "original_language": "en",
+                                  "original_title": "The Wolf of Wall Street",
+                                  "genre_ids": [
+                                    80,
+                                    18,
+                                    35
+                                  ],
+                                  "backdrop_path": "\/rP36Rx5RQh0rmH2ynEIaG8DxbV2.jpg",
+                                  "adult": false,
+                                  "overview": "A New York stockbroker refuses to cooperate in a large securities fraud case involving corruption on Wall Street, corporate banking world and mob infiltration. Based on Jordan Belfort's autobiography.",
+                                  "release_date": "2013-12-25"
+                                },
+                                {
+                                  "vote_count": 0,
+                                  "id": 423766,
+                                  "video": false,
+                                  "vote_average": 0,
+                                  "title": "The Wolf of Wall Street",
+                                  "popularity": 0.6,
+                                  "poster_path": "\/aNGsE1nVtQHu4pvPzNvqVaczztb.jpg",
+                                  "original_language": "en",
+                                  "original_title": "The Wolf of Wall Street",
+                                  "genre_ids": [],
+                                  "backdrop_path": null,
+                                  "adult": false,
+                                  "overview": "A ruthless stockbroker sells short in the copper business and ruins the life of his friends by ruining their finances.",
+                                  "release_date": "1929-02-09"
+                                }
+                              ]
+                            }"""
+
+        val parsed = Json.parse(MoviesResponse.serializer(), jsonString)
+        assertThat(parsed.results.size).isEqualTo(2)
+    }
 }

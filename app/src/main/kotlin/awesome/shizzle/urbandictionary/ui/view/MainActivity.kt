@@ -1,12 +1,13 @@
 package awesome.shizzle.urbandictionary.ui.view
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import awesome.shizzle.urbandictionary.R
 import awesome.shizzle.urbandictionary.ui.adapter.DefinitionsListAdapter
 import awesome.shizzle.urbandictionary.ui.state.DefinitionsViewModel
@@ -18,21 +19,24 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val definitionsViewModel: DefinitionsViewModel by viewModel()
+    private val definitionsViewModel by viewModel<DefinitionsViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerview.adapter = DefinitionsListAdapter()
-        recyclerview.addItemDecoration(DefinitionItemDecorator(resources.getDimension(R.dimen.list_item_margin).toInt()))
+        with(recyclerview) {
+            adapter = DefinitionsListAdapter()
+            addItemDecoration(DefinitionItemDecorator(context))
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        }
 
         definitionsViewModel.loadingState.observe(this, Observer {
             if (it) persistentSearchView.showProgressBar()
             else persistentSearchView.hideProgressBar()
         })
 
-        definitionsViewModel.content.observe(this, Observer {
+        definitionsViewModel.contentState.observe(this, Observer {
             (recyclerview.adapter as DefinitionsListAdapter).submitList(it)
             recyclerview.requestFocus()
         })
@@ -63,6 +67,10 @@ class MainActivity : AppCompatActivity() {
                         definitionsViewModel.sortWith(index)
                     }.show()
             }
+
+            setRightButtonDrawable(R.drawable.ic_sort_black_24dp)
+
+            setQueryInputHint("Search in Urban Dictionary")
         }
     }
 

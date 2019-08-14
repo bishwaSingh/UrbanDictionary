@@ -2,9 +2,6 @@ package awesome.shizzle.urbandictionary.di
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import awesome.shizzle.urbandictionary.di.appModule
-import awesome.shizzle.urbandictionary.di.networkModule
-import awesome.shizzle.urbandictionary.network.RapidAPIService
 import awesome.shizzle.urbandictionary.ui.state.DefinitionsViewModel
 import com.google.common.truth.Truth.assertThat
 import org.junit.Rule
@@ -15,7 +12,6 @@ import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.get
-import org.koin.test.inject
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
@@ -40,7 +36,7 @@ class SimpleDITest : KoinTest {
 
         assertThat(defVM).isNotNull()
         assertThat(defVM.errorState.value).isNull()
-        assertThat(defVM.content.value).isNull()
+        assertThat(defVM.contentState.value).isNull()
         stopKoin()
     }
 
